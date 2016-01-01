@@ -1,0 +1,20 @@
+<h1> {{ post.title }} </h1>
+
+{% if post.body and not post.author %}
+	<p> {{ post.body|linebreaksbr }} </p>
+{% endif %}
+{% if post.embed_code %}
+	{{ post.embed_code|safe }}
+{% endif %}
+{% if post.image %}
+	<p> <img src="{% url 'image_file' slug=post.slug %}" width="{{ post.image.size.0 }}" height="{{ post.image.size.1 }}" /> </p>
+{% endif %}
+{% if post.link_url %}
+	<a href="{{ post.link_url }}" target="_blank"> Go to link </a>
+{% endif %}
+{% if post.author %}
+	<blockquote>{{ post.body|linebreaksbr }}</blockquote>
+	<p>{{ post.author.first_name }} {{ post.author.last_name }}</p>
+{% endif %}
+<p>{{ post.created_at }}</p>
+<a href="{% url 'sukublog:delete_post' slug=post.slug %}"> delete </a>

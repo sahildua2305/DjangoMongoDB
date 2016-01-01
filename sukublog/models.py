@@ -3,7 +3,7 @@
 # @Author: sahildua2305
 # @Date:   2016-01-01 19:27:32
 # @Last Modified by:   sahildua2305
-# @Last Modified time: 2016-01-02 01:39:48
+# @Last Modified time: 2016-01-02 02:22:17
 
 from __future__ import unicode_literals
 
@@ -18,6 +18,9 @@ class User(Document):
 	email = StringField(required=True)
 	first_name = StringField(max_length=50)
 	last_name = StringField(max_length=50)
+
+	def __unicode__(self):
+		return self.first_name + " " + self.last_name + "(" + self.email + ")"
 
 
 # Embedded documents don't have any separate collection in the database

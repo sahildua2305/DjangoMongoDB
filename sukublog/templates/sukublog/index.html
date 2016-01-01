@@ -1,0 +1,9 @@
+{% if latest_post_list %}
+	<ul>
+		{% for post in latest_post_list %}
+		<li><a href="{% url 'sukublog:view_post' post.slug %}">{{ post.title }} </a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p> No post has been posted yet. </p>
+{% endif %}
