@@ -1,3 +1,3 @@
 # DjangoMongoDB
 
-A sample blogging app using Django and MongoDB
+A simple blogging app using Django and MongoDB
