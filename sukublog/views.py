@@ -3,7 +3,7 @@
 # @Author: sahildua2305
 # @Date:   2016-01-01 19:27:32
 # @Last Modified by:   sahildua2305
-# @Last Modified time: 2016-01-02 04:31:02
+# @Last Modified time: 2016-01-03 01:26:00
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -43,12 +43,10 @@ def delete_post(request, slug):
 	try:
 		post = Post.objects.get(pk=slug)
 	except (KeyError, Post.DoesNotExist):
-		context = {
-			'error_message': "Invalid post slug.",
-		}
-		return HttpResponseRedirect(reverse('sukublog:index', args=()))
+		pass
 	else:
 		post.delete()
+	finally:
 		''' Always return an HttpResponseRedirect after successfully dealing with POST data.
 		This prevents data from being posted twice if a user hits the Back button'''
 		return HttpResponseRedirect(reverse('sukublog:index', args=()))
