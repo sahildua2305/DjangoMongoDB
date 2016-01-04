@@ -3,7 +3,7 @@
 # @Author: sahildua2305
 # @Date:   2016-01-01 19:27:32
 # @Last Modified by:   sahildua2305
-# @Last Modified time: 2016-01-02 02:22:17
+# @Last Modified time: 2016-01-05 00:55:07
 
 from __future__ import unicode_literals
 
@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from mongoengine import *
 
 import datetime
+
 
 # All documents are saved in a MongoDB collection rather than a table
 class User(Document):
@@ -50,6 +51,9 @@ class Post(Document):
 	def get_absolute_url(self):
 		return reverse('post', kwargs={"slug": self.slug})
 
+	"""
+	__unicode__ method is default method that determines what will be shown in class representation
+	"""
 	def __unicode__(self):
 		return self.title
 
